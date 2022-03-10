@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/turnip-stalker/static/css/main.073c9b0a.css",
+    "main.js": "/turnip-stalker/static/js/main.dd7f85df.js",
+    "static/js/787.9f7970bd.chunk.js": "/turnip-stalker/static/js/787.9f7970bd.chunk.js",
+    "index.html": "/turnip-stalker/index.html",
+    "main.073c9b0a.css.map": "/turnip-stalker/static/css/main.073c9b0a.css.map",
+    "main.dd7f85df.js.map": "/turnip-stalker/static/js/main.dd7f85df.js.map",
+    "787.9f7970bd.chunk.js.map": "/turnip-stalker/static/js/787.9f7970bd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.dd7f85df.js"
+  ]
+}
