@@ -3,9 +3,10 @@ import './App.css';
 import { useState } from 'react';
 import { AppShell, Burger, Button, Container, Group, Header, Image, MantineProvider, MediaQuery, Navbar, Space, Text, useMantineTheme } from '@mantine/core';
 import { test } from './feed/service';
+import turnipIconSvg from './images/turnip-icon.svg';
 
 
-test()
+// test()
 function App() {
   const [opened, setOpened] = useState(false);
   const theme = useMantineTheme();
@@ -21,7 +22,7 @@ function App() {
           <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
             <Image
               width={35}
-              src='./turnip-icon.svg'
+              src={turnipIconSvg}
               alt='turnip'
             />
             <Space w='xs' />
@@ -54,6 +55,7 @@ function App() {
       <Button>
         Settings
       </Button>
+
     </AppShell>
   );
 }
