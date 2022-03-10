@@ -1,11 +1,30 @@
 import React from 'react';
 import './App.css';
 import { useState } from 'react';
-import { ActionIcon, AppShell, Badge, Burger, Button, ColorScheme, ColorSchemeProvider, Container, Group, Header, Image, MantineProvider, MediaQuery, Navbar, Space, Text, ThemeIcon, useMantineColorScheme, useMantineTheme } from '@mantine/core';
-import { test } from './feed/service';
-import turnipIconSvg from './images/turnip-icon.svg';
+import {
+  ActionIcon,
+  AppShell,
+  Badge,
+  Burger,
+  Button,
+  ColorScheme,
+  ColorSchemeProvider,
+  Container,
+  Group,
+  Header,
+  Image,
+  MantineProvider,
+  MediaQuery,
+  Navbar,
+  Space,
+  Text,
+  ThemeIcon,
+  useMantineColorScheme,
+  useMantineTheme,
+} from '@mantine/core';
+import { test } from '../../services/fetchData';
+import turnipIconSvg from '../../assets/turnip-icon.svg';
 import { Sun, MoonStars } from 'tabler-icons-react';
-
 
 export function ActionToggle() {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
@@ -27,7 +46,6 @@ export function ActionToggle() {
   );
 }
 
-
 // test()
 function App() {
   const [opened, setOpened] = useState(false);
@@ -43,22 +61,22 @@ function App() {
     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
       <MantineProvider theme={{ colorScheme }} withGlobalStyles>
         <AppShell
-          navbarOffsetBreakpoint='sm'
+          navbarOffsetBreakpoint="sm"
           fixed
           header={
-            <Header height={70} padding='md'>
+            <Header height={70} padding="md">
               {/* Handle other responsive styles with MediaQuery component or createStyles function */}
               <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
-                <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
+                <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
                   <Burger
                     opened={opened}
                     onClick={() => setOpened((o) => !o)}
-                    size='sm'
+                    size="sm"
                     color={theme.colors.gray[6]}
-                    mr='xl'
+                    mr="xl"
                   />
                 </MediaQuery>
-                <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
+                <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
                   <Container />
                 </MediaQuery>
 
@@ -66,33 +84,26 @@ function App() {
                   <ThemeIcon
                     size={'xl'}
                     sx={(theme) => ({
-                      backgroundColor:
-                        theme.colorScheme === 'dark' ? theme.colors.dark[0] : '#fff',
+                      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[0] : '#fff',
                     })}
                   >
-                    <Image
-                      width={35}
-                      src={turnipIconSvg}
-                      alt='turnip'
-                    />
+                    <Image width={35} src={turnipIconSvg} alt="turnip" />
                   </ThemeIcon>
 
-                  <Text size='xl' weight={'bold'}>Turnip Stalker</Text>
-                  <Badge>
-                    {'1.2.0'}
-                  </Badge>
+                  <Text size="xl" weight={'bold'}>
+                    Turnip Stalker
+                  </Text>
+                  <Badge>{'1.2.0'}</Badge>
                 </Group>
                 <Container />
                 <ActionToggle />
-
-
               </div>
             </Header>
           }
           navbar={
             <Navbar
-              padding='md'
-              hiddenBreakpoint='sm'
+              padding="md"
+              hiddenBreakpoint="sm"
               hidden={!opened}
               width={{ sm: 300, lg: 400 }}
             >
@@ -101,10 +112,7 @@ function App() {
           }
         >
           <Text>Resize app to see responsive navbar in action</Text>
-          <Button>
-            Settings
-          </Button>
-
+          <Button>Settings</Button>
         </AppShell>
       </MantineProvider>
     </ColorSchemeProvider>
