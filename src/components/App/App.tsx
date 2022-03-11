@@ -51,11 +51,12 @@ function App() {
   const [opened, setOpened] = useState(false);
   const theme = useMantineTheme();
 
-  // const [date, time] = new Date().toISOString().replace(/.\d+Z$/g, "").replace('T', ' ').split(':');
-  // const dateBadge = `${date}:${time}`;
   const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
+
+  const themeColor = document.querySelector("meta[name='theme-color']");
+  themeColor?.setAttribute('content', colorScheme === 'dark' ? '#1A1B1E' : '#FFFFFF');
 
   return (
     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
@@ -65,7 +66,6 @@ function App() {
           fixed
           header={
             <Header height={70} padding="md">
-              {/* Handle other responsive styles with MediaQuery component or createStyles function */}
               <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
                 <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
                   <Burger
@@ -76,9 +76,8 @@ function App() {
                     mr="xl"
                   />
                 </MediaQuery>
-                <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
-                  <Container />
-                </MediaQuery>
+                {/* <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+                </MediaQuery> */}
 
                 <Group>
                   <ThemeIcon
@@ -95,7 +94,6 @@ function App() {
                   </Text>
                   <Badge>{'1.2.0'}</Badge>
                 </Group>
-                <Container />
                 <ActionToggle />
               </div>
             </Header>
