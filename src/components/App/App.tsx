@@ -1,17 +1,10 @@
-import {
-  AppShell,
-  Button,
-  ColorScheme,
-  ColorSchemeProvider,
-  MantineProvider,
-  Text,
-} from '@mantine/core';
+import { AppShell, ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core';
 import React, { useState } from 'react';
+import Feed from '../Feed/Feed';
 import Navigation from '../Navigation/Navigation';
 import StickyHeader from '../StickyHeader/StickyHeader';
 import './App.css';
 
-// test()
 function App() {
   const [opened, setOpened] = useState(false);
   const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
@@ -21,15 +14,20 @@ function App() {
 
   return (
     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-      <MantineProvider theme={{ colorScheme }} withGlobalStyles>
+      <MantineProvider
+        theme={{
+          colorScheme: colorScheme,
+          primaryColor: 'yellow',
+        }}
+        withGlobalStyles
+      >
         <AppShell
-          navbarOffsetBreakpoint="sm"
+          navbarOffsetBreakpoint='sm'
           fixed
           header={<StickyHeader opened={opened} setOpened={setOpened} />}
           navbar={<Navigation opened={opened} />}
         >
-          <Text>Resize app to see responsive navbar in action</Text>
-          <Button>Settings</Button>
+          <Feed />
         </AppShell>
       </MantineProvider>
     </ColorSchemeProvider>

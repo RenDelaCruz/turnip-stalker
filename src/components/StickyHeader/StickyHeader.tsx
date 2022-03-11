@@ -1,5 +1,4 @@
 import {
-  Badge,
   Burger,
   Container,
   createStyles,
@@ -41,12 +40,10 @@ function StickyHeader({ opened, setOpened }: StickyHeaderProps) {
             onClick={() => setOpened((o) => !o)}
             size="sm"
             color={theme.colors.gray[6]}
-            mr="xl"
           />
         </MediaQuery>
-
-        <Group>
-          <MediaQuery smallerThan={450} styles={{ display: 'none' }}>
+        <Group spacing="xs">
+          <MediaQuery smallerThan={350} styles={{ display: 'none' }}>
             <ThemeIcon
               size={'xl'}
               sx={(theme) => ({
@@ -60,9 +57,6 @@ function StickyHeader({ opened, setOpened }: StickyHeaderProps) {
           <Text size="xl" weight={'bold'}>
             Turnip Stalker
           </Text>
-          <MediaQuery smallerThan={450} styles={{ display: 'none' }}>
-            <Badge>{'1.4.0'}</Badge>
-          </MediaQuery>
         </Group>
         <ThemeToggle />
       </Container>

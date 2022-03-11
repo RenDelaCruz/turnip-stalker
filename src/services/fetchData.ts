@@ -1,4 +1,4 @@
-import { RedditResponse, Children } from '../interfaces/RedditResponse';
+import { Children, RedditResponse } from '../interfaces/RedditResponse';
 
 const URLS = [
   'https://www.reddit.com/r/acturnips/new/.json',
@@ -18,7 +18,7 @@ async function fetchData(...urls: string[]): Promise<Array<RedditResponse>> {
   }
 }
 
-export function test() {
+export function parseData() {
   const fetchedData = fetchData(...URLS);
   fetchedData.then((results) => {
     const combinedResults: Children[] = [];
@@ -28,6 +28,6 @@ export function test() {
       } = result;
       combinedResults.push(...children);
     });
-    console.log(combinedResults);
+    console.log(...combinedResults.map(r => r.data))
   });
 }

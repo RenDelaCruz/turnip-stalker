@@ -33,7 +33,7 @@ export interface Data2 {
   pwls: number;
   link_flair_css_class?: string;
   downs: number;
-  thumbnail_height?: number;
+  thumbnail_height?: number | null;
   top_awarded_type: any;
   hide_score: boolean;
   name: string;
@@ -45,14 +45,14 @@ export interface Data2 {
   ups: number;
   total_awards_received: number;
   media_embed: MediaEmbed;
-  thumbnail_width?: number;
+  thumbnail_width?: number | null;
   author_flair_template_id: any;
   is_original_content: boolean;
   user_reports: any[];
   secure_media: any;
   is_reddit_media_domain: boolean;
   is_meta: boolean;
-  category?: string;
+  category?: string | null;
   secure_media_embed: SecureMediaEmbed;
   link_flair_text: string;
   can_mod_post: boolean;
@@ -76,7 +76,7 @@ export interface Data2 {
   author_flair_type: string;
   domain: string;
   allow_live_comments: boolean;
-  selftext_html?: string;
+  selftext_html?: string | null;
   likes: any;
   suggested_sort: any;
   banned_at_utc: any;
