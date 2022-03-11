@@ -1,5 +1,7 @@
 include .makefile.inc
 
+APP_URL = "http://localhost:3000/turnip-stalker"
+
 ## Starts app in development mode
 start:
 	npm start
@@ -12,11 +14,22 @@ test:
 build:
 	npm run build
 
-## Removes the single build dependency of the app
-## Warning: One-way operation
-eject:
-	npm run eject
-
 ## Deploys the app to GitHub Pages
 deploy:
 	npm run deploy
+
+## Broswer commands
+
+## Opens the local project in Safari
+safari:
+	open -a safari ${APP_URL}
+
+## Opens the local project in Chrome
+chrome:
+	open -a Google\ Chrome ${APP_URL}
+
+## Other commands
+
+## Removes the single build dependency of the app. Warning: One-way operation
+eject:
+	npm run eject

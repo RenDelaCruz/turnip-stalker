@@ -1,6 +1,8 @@
 import {
   Badge,
   Burger,
+  Container,
+  createStyles,
   Group,
   Header,
   Image,
@@ -13,6 +15,14 @@ import React, { Dispatch, SetStateAction } from 'react';
 import turnipIconSvg from '../../assets/turnip-icon.svg';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
 
+const useStyles = createStyles((theme) => ({
+  spacedHeader: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+}));
+
 type StickyHeaderProps = {
   opened: boolean;
   setOpened: Dispatch<SetStateAction<boolean>>;
@@ -20,10 +30,11 @@ type StickyHeaderProps = {
 
 function StickyHeader({ opened, setOpened }: StickyHeaderProps) {
   const theme = useMantineTheme();
+  const { classes } = useStyles();
 
   return (
     <Header height={70} padding="md">
-      <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
+      <Container className={classes.spacedHeader} fluid>
         <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
           <Burger
             opened={opened}
@@ -35,22 +46,26 @@ function StickyHeader({ opened, setOpened }: StickyHeaderProps) {
         </MediaQuery>
 
         <Group>
-          <ThemeIcon
-            size={'xl'}
-            sx={(theme) => ({
-              backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[0] : '#fff',
-            })}
-          >
-            <Image width={35} src={turnipIconSvg} alt="turnip" />
-          </ThemeIcon>
+          <MediaQuery smallerThan={450} styles={{ display: 'none' }}>
+            <ThemeIcon
+              size={'xl'}
+              sx={(theme) => ({
+                backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[0] : '#fff',
+              })}
+            >
+              <Image width={35} src={turnipIconSvg} alt="turnip" />
+            </ThemeIcon>
+          </MediaQuery>
 
           <Text size="xl" weight={'bold'}>
             Turnip Stalker
           </Text>
-          <Badge>{'1.2.0'}</Badge>
+          <MediaQuery smallerThan={450} styles={{ display: 'none' }}>
+            <Badge>{'1.4.0'}</Badge>
+          </MediaQuery>
         </Group>
         <ThemeToggle />
-      </div>
+      </Container>
     </Header>
   );
 }
