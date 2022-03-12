@@ -1,13 +1,19 @@
-import { Navbar, Text } from '@mantine/core';
+import { MantineNumberSize, Navbar, Text } from '@mantine/core';
 import React from 'react';
 
 type NavigationProps = {
-  opened: boolean;
+  padding: MantineNumberSize;
+  hiddenBreakpoint: MantineNumberSize;
+  hidden: boolean;
+  width: {
+    sm: number;
+    lg: number;
+  };
 };
 
-function Navigation({ opened }: NavigationProps) {
+function Navigation({ ...navbarProps }: NavigationProps) {
   return (
-    <Navbar padding="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 300, lg: 400 }}>
+    <Navbar {...navbarProps}>
       <Text>Aggregate and filter turnip prices from Reddit posts</Text>
     </Navbar>
   );

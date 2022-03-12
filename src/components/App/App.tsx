@@ -24,8 +24,15 @@ function App() {
         <AppShell
           navbarOffsetBreakpoint='sm'
           fixed
-          header={<StickyHeader opened={opened} setOpened={setOpened} />}
-          navbar={<Navigation opened={opened} />}
+          header={<StickyHeader opened={opened} setOpened={setOpened} height={70} padding='md' />}
+          navbar={
+            <Navigation
+              padding='md'
+              hiddenBreakpoint='sm'
+              hidden={!opened}
+              width={{ sm: 300, lg: 400 }}
+            />
+          }
         >
           <Feed />
         </AppShell>

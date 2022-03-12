@@ -5,6 +5,7 @@ import {
   Group,
   Header,
   Image,
+  MantineNumberSize,
   MediaQuery,
   Text,
   ThemeIcon,
@@ -14,7 +15,7 @@ import React, { Dispatch, SetStateAction } from 'react';
 import turnipIconSvg from '../../assets/turnip-icon.svg';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles(theme => ({
   spacedHeader: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -25,35 +26,37 @@ const useStyles = createStyles((theme) => ({
 type StickyHeaderProps = {
   opened: boolean;
   setOpened: Dispatch<SetStateAction<boolean>>;
+  height: number;
+  padding: MantineNumberSize;
 };
 
-function StickyHeader({ opened, setOpened }: StickyHeaderProps) {
+function StickyHeader({ opened, setOpened, ...headerProps }: StickyHeaderProps) {
   const theme = useMantineTheme();
   const { classes } = useStyles();
 
   return (
-    <Header height={70} padding="md">
+    <Header {...headerProps}>
       <Container className={classes.spacedHeader} fluid>
-        <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+        <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
           <Burger
             opened={opened}
-            onClick={() => setOpened((o) => !o)}
-            size="sm"
+            onClick={() => setOpened(o => !o)}
+            size='sm'
             color={theme.colors.gray[6]}
           />
         </MediaQuery>
-        <Group spacing="xs">
+        <Group spacing='xs'>
           <MediaQuery smallerThan={350} styles={{ display: 'none' }}>
             <ThemeIcon
               size={'xl'}
-              sx={(theme) => ({
+              sx={theme => ({
                 backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[0] : '#fff',
               })}
             >
-              <Image width={35} src={turnipIconSvg} alt="turnip" />
+              <Image width={35} src={turnipIconSvg} alt='turnip' />
             </ThemeIcon>
           </MediaQuery>
-          <Text size="xl" weight={'bold'}>
+          <Text size='xl' weight={'bold'}>
             Turnip Stalker
           </Text>
         </Group>
