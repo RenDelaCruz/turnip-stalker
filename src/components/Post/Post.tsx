@@ -1,44 +1,72 @@
 import { ActionIcon, Avatar, Badge, Card, createStyles, Group, Image, Text } from '@mantine/core';
+import { SetStateAction, useState } from 'react';
 import { Bookmark, Heart, Share } from 'tabler-icons-react';
-import { parseData } from '../../services/fetchData';
+import { Children, Data2 } from '../../interfaces/RedditResponse';
+import { fetchData } from '../../services/fetchData';
 import { mockedRedditResponse } from '../../services/fetchData.test';
 
+const URLS = [
+  'https://www.reddit.com/r/acturnips/new/.json',
+  'https://www.reddit.com/r/TurnipExchange/new/.json',
+  'https://www.reddit.com/r/ACNHTurnips/new/.json',
+];
+
 // const mock = mockedRedditResponse;
-const mockedData = parseData();
+// const mockedData = parseData();
 
 function Post() {
-  const posts = mockedRedditResponse.map((mock) => {
-    return (
-      <ArticleCardFooter
-        key={mock.id}
-        image={mock.url_overridden_by_dest ?? ''}
-        title={mock.title}
-        author={{
-          name: mock.author,
-          description: mock.num_comments.toString(),
-          image: mock.url,
-        }}
-        footer={mock.num_comments.toString()}
-        category={'500 Bells'}
-      />
-    );
-  });
+  // const [posts, setPosts] = useState<SetStateAction<Data2[] | null>>(null);
+  // fetchData(...URLS).then(siteResponse => {
+  //   const flatResponse: Children[] = [];
+  //   siteResponse.forEach(response => {
+  //     const {
+  //       data: { children },
+  //     } = response;
+  //     flatResponse.push(...children);
+  //   });
+  //   const combinedPosts = flatResponse.map(r => r.data);
+  //   console.log(combinedPosts);
+  //   setPosts(combinedPosts);
+  // });
 
-  return (
-    <div
-      style={{
-        textAlign: 'center',
-        margin: '0 auto',
-      }}
-    >
-      {posts}
-    </div>
-  );
+  const posts = mockedRedditResponse;
+
+  if (posts && Array.isArray(posts)) {
+    const cards = posts.map(post => {
+      return (
+        <ArticleCardFooter
+          key={post.id}
+          image={post.url_overridden_by_dest ?? ''}
+          title={post.title}
+          author={{
+            name: post.author,
+            description: post.num_comments.toString(),
+            image: post.url,
+          }}
+          footer={post.num_comments.toString()}
+          category={'500 Bells'}
+        />
+      );
+    });
+
+    return (
+      <div
+        style={{
+          textAlign: 'center',
+          margin: '0 auto',
+        }}
+      >
+        {cards}
+      </div>
+    );
+  }
+
+  return <div />;
 }
 
 export default Post;
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles(theme => ({
   card: {
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
   },

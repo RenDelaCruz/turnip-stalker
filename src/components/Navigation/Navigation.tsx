@@ -7,7 +7,7 @@ type NavigationProps = {
 
 function Navigation({ opened }: NavigationProps) {
   return (
-    <Navbar padding="xl" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 300, lg: 400 }}>
+    <Navbar padding="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 300, lg: 400 }}>
       <Text>Aggregate and filter turnip prices from Reddit posts</Text>
     </Navbar>
   );

@@ -53,7 +53,6 @@ function StickyHeader({ opened, setOpened }: StickyHeaderProps) {
               <Image width={35} src={turnipIconSvg} alt="turnip" />
             </ThemeIcon>
           </MediaQuery>
-
           <Text size="xl" weight={'bold'}>
             Turnip Stalker
           </Text>

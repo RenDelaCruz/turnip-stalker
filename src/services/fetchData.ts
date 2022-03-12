@@ -6,12 +6,12 @@ const URLS = [
   'https://www.reddit.com/r/ACNHTurnips/new/.json',
 ];
 
-async function fetchData(...urls: string[]): Promise<Array<RedditResponse>> {
+export async function fetchData(...urls: string[]): Promise<Array<RedditResponse>> {
   try {
-    const fetchPromises = urls.map((url) => fetch(url));
+    const fetchPromises = urls.map(url => fetch(url));
     const responses = await Promise.all(fetchPromises);
-    const jsonPromises = responses.map((r) => r.json());
-    return await Promise.all(jsonPromises);
+    const jsonPromises = responses.map(r => r.json());
+    return Promise.all(jsonPromises);
   } catch (error) {
     console.error(`Failed to fetch data from server: ${error}`);
     throw error;
@@ -20,14 +20,14 @@ async function fetchData(...urls: string[]): Promise<Array<RedditResponse>> {
 
 export function parseData() {
   const fetchedData = fetchData(...URLS);
-  fetchedData.then((results) => {
+  fetchedData.then(results => {
     const combinedResults: Children[] = [];
-    results.forEach((result) => {
+    results.forEach(result => {
       const {
         data: { children },
       } = result;
       combinedResults.push(...children);
     });
-    console.log(...combinedResults.map(r => r.data))
+    return combinedResults.map(r => r.data);
   });
 }
