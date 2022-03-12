@@ -1,8 +1,5 @@
-import { ActionIcon, Avatar, Badge, Card, createStyles, Group, Image, Text } from '@mantine/core';
-import { SetStateAction, useState } from 'react';
+import { ActionIcon, Avatar, Badge, Card, Container, createStyles, Group, Image, Text } from '@mantine/core';
 import { Bookmark, Heart, Share } from 'tabler-icons-react';
-import { Children, Data2 } from '../../interfaces/RedditResponse';
-import { fetchData } from '../../services/fetchData';
 import { mockedRedditResponse } from '../../services/fetchData.test';
 
 const URLS = [
@@ -51,10 +48,6 @@ function Post() {
 
     return (
       <div
-        style={{
-          textAlign: 'center',
-          margin: '0 auto',
-        }}
       >
         {cards}
       </div>
@@ -64,7 +57,7 @@ function Post() {
   return <div />;
 }
 
-export default Post;
+// export default Post;
 
 const useStyles = createStyles(theme => ({
   card: {
@@ -96,14 +89,18 @@ interface ArticleCardFooterProps {
   };
 }
 
+export default ArticleCardFooter;
+
 function ArticleCardFooter({ image, category, title, footer, author }: ArticleCardFooterProps) {
   const { classes, theme } = useStyles();
 
   return (
     <Card withBorder padding='lg' radius='md' className={classes.card}>
-      <Card.Section mb='sm'>
-        <Image src={image} alt={title} height={180} />
-      </Card.Section>
+      {image && (
+        <Card.Section mb='sm'>
+          <Image src={image} alt={title} height={180} />
+        </Card.Section>
+      )}
 
       <Badge>{category}</Badge>
 
@@ -124,7 +121,7 @@ function ArticleCardFooter({ image, category, title, footer, author }: ArticleCa
       <Card.Section className={classes.footer}>
         <Group position='apart'>
           <Text size='xs' color='dimmed'>
-            {footer}
+            {footer} comments
           </Text>
           <Group spacing={0}>
             <ActionIcon>
