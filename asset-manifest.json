@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/turnip-stalker/static/css/main.073c9b0a.css",
-    "main.js": "/turnip-stalker/static/js/main.a7a95400.js",
+    "main.js": "/turnip-stalker/static/js/main.de9bb9d0.js",
     "static/js/787.9f7970bd.chunk.js": "/turnip-stalker/static/js/787.9f7970bd.chunk.js",
     "static/media/turnip-icon.svg": "/turnip-stalker/static/media/turnip-icon.847eff458bcf8f5ec9a8fa219c4e88d6.svg",
     "index.html": "/turnip-stalker/index.html",
     "main.073c9b0a.css.map": "/turnip-stalker/static/css/main.073c9b0a.css.map",
-    "main.a7a95400.js.map": "/turnip-stalker/static/js/main.a7a95400.js.map",
+    "main.de9bb9d0.js.map": "/turnip-stalker/static/js/main.de9bb9d0.js.map",
     "787.9f7970bd.chunk.js.map": "/turnip-stalker/static/js/787.9f7970bd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.a7a95400.js"
+    "static/js/main.de9bb9d0.js"
   ]
 }
